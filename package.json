@@ -1,0 +1,27 @@
+{
+  "name": "hamsterwars",
+  "version": "1.0.0",
+  "description": "Hamster Wars Part 1 of 2(backend)\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[B\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D (Backend) \u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D - Part 1 of 2 (Backend)",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "REST",
+    "API",
+    "CRUD",
+    "Firestore"
+  ],
+  "author": "Kim Varpins",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase-admin": "^9.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
