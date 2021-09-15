@@ -1,12 +1,10 @@
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
-getAllDocuments();
-
-async function getAllDocuments() {
+ async function getAllHamsters() {
     console.log('Getting all hamsters...');
 
-    const hamstersRef = db.collection(HAMSTERS) 
+    const hamstersRef = db.collection(HAMSTERS);
 
     const hamstersSnapshot = await hamstersRef.get()            
 
@@ -29,3 +27,5 @@ async function getAllDocuments() {
     console.log('Hamsters from database:', arr);
     return arr
 }
+
+module.exports = { getAllHamsters }

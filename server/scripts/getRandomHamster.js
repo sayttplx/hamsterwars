@@ -1,7 +1,6 @@
+const { random } = require('lodash');
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
-
-getRandomHamster();
 
 async function getRandomHamster() {
     const hamstersRef = db.collection(HAMSTERS);
@@ -19,5 +18,7 @@ async function getRandomHamster() {
 
     const randomHamster = arr[Math.floor(Math.random() * arr.length)]
     console.log('Found: ', randomHamster);
-    return arr;
+    return randomHamster;
 };
+
+module.exports = { getRandomHamster }

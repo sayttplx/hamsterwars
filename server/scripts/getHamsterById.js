@@ -1,8 +1,6 @@
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
-getHamsterById();
-
 async function getHamsterById(id) {
     console.log('Looking for Sixten...');
     const hamsterId = id || 'shiHHMqav5KSyhcak49L'
@@ -14,8 +12,9 @@ async function getHamsterById(id) {
         return
     }
     const hamster = await hamsterSnapshot.data()
-    console.log('Found: ', hamster);
-    return hamster
+    return hamster;
 }
 
-module.exports = getHamsterById
+
+
+module.exports = { getHamsterById }

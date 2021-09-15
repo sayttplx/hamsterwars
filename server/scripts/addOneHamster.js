@@ -20,3 +20,5 @@ async function addOneHamster() {
 	const hamsterRef = await db.collection(HAMSTERS).add(object)
 	console.log('Added hamster with the id ' + hamsterRef.id);
 }
+
+exports.addOneHamster = addOneHamster;
