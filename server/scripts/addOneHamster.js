@@ -6,11 +6,11 @@ addOneHamster();
 async function addOneHamster() {
 	console.log('Add a new hamster...');
 	const object = {
-        name: 'Hamster',
+        name: 'Steven',
         age: 1,
         imgName: 'hamster-1.jpg',
-        loves: 'pokemon',
-        favFood: 'grass',
+        loves: 'food',
+        favFood: 'pasta',
         wins: 0,
         defeats: 0,
         games: 0,
