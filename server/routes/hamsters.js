@@ -8,6 +8,8 @@ const getHamsterById = require('../scripts/getHamsterById').getHamsterById
 const getRandomHamster = require('../scripts/getRandomHamster').getRandomHamster
 const getCutestHamster = require('../scripts/getCutestHamster').getCutestHamster
 const addOneHamster = require('../scripts/addOneHamster').addOneHamster
+const updateOneHamsterById = require('../scripts/updateOneHamsterById').updateOneHamsterById
+const deleteHamsterById = require('../scripts/deleteHamsterById').deleteHamsterById 
 
 // GET /hamsters
 router.get('/', async (req, res) => {
@@ -61,6 +63,29 @@ router.post('/', async (req, res) => {
 });
 
 // PUT /hamsters/:id
+router.put('/:id', async (req, res) => {
+	id = req.params.id;
+	const hamster = req.body;
+	const updatedHamster = await updateOneHamsterById(id, hamster);
+	if (updatedHamster) {
+		res.send(updatedHamster);
+	} else {
+		res.sendStatus(404);
+	}
+});
+
+// DELETE /hamsters/:id
+router.delete('/:id', async (req, res) => {
+	id = req.params.id;
+	const deleted = await deleteHamsterById(id);
+if (deleted) {
+	res.sendStatus(204);
+} else {
+	res.sendStatus(404);
+
+	}
+});
+
 
 
 module.exports = router
