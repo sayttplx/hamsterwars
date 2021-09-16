@@ -1,4 +1,3 @@
-const { random } = require('lodash');
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 

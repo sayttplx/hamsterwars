@@ -10,7 +10,7 @@ const HAMSTERS = 'hamsters'
 
     if (hamstersSnapshot.empty) {
         console.log('No hamsters found.');
-        return
+        return arr;
     }
     
     const arr = []

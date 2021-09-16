@@ -1,7 +1,7 @@
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
-getCutestHamster();
+
 
 async function getCutestHamster() {
     console.log('Getting cutest hamster...');
@@ -27,5 +27,10 @@ async function getCutestHamster() {
     for (let i = 0; i < 1; i++) {
         cutestHamster.push(sortedHamsters[i])
     }
-    console.log(cutestHamster.map(hamster => `${hamster.name} is the cutest hamster!`));
+
+    return cutestHamster;    
 }
+
+
+module.exports = { getCutestHamster };
+

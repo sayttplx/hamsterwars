@@ -11,6 +11,7 @@ app.use( express.urlencoded({ extended: true }) )
 app.use( express.json() )
 app.use((req, res, next) => {
 	console.log(`${req.method} ${req.url}`);
+	console.log(req.body);
 	next()
 })
 
