@@ -1,7 +1,7 @@
 const { db } = require('../firebase');
 const HAMSTERS = 'hamsters';
 const validate = require('../validators/isHamsterUpdateObject');
-// const validateHamster = require('../validators/isHamsterObject');
+const validateHamster = require('../validators/isHamsterObject');
 
 
 
@@ -122,11 +122,15 @@ exports.getCutestHamster = async (req, res) => {
 
 exports.addOneHamster = async (req, res) => {
 
-    
+    if (!validateHamster(req.body)) {
+        res.sendStatus(400);
+        return;
+    }
+
     const hamster = req.body;
     const hamstersRef = db.collection(HAMSTERS);
     await hamstersRef.add(hamster);
-    res.sendStatus(200);
+    const hamsterId = await hamstersRef.add(hamster)
+    console.log(hamsterId.id);
+    res.status(200).send(`New hamster created with id : ${hamsterId.id}`);
 }
-
-
