@@ -6,16 +6,19 @@ async function updateOneHamsterById(id) {
     const hamsterId = id 
 
     const update = {
-        loves: 'apple',
-        favFood: 'asdfgsss',
+        name: 'Lisa',
+        age: 1,
+        imgName: 'hamster-1.jpg',
+        loves: 'walks',
+        favFood: 'chips',
         wins: 0,
+        defeats: 0,
+        games: 0,
     }
     const settings = { merge: true }
     await db.collection(HAMSTERS).doc(hamsterId).set(update, settings)
-    console.log('Sixten is updated!');
 
     const hamster = await db.collection(HAMSTERS).doc(hamsterId).get()
-    console.log(hamster.data())
     return hamster.data()
 }
 

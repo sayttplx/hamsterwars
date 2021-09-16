@@ -68,7 +68,7 @@ router.put('/:id', async (req, res) => {
 	const hamster = req.body;
 	const updatedHamster = await updateOneHamsterById(id, hamster);
 	if (updatedHamster) {
-		res.send(updatedHamster);
+		res.sendStatus(200);
 	} else {
 		res.sendStatus(404);
 	}
@@ -79,7 +79,7 @@ router.delete('/:id', async (req, res) => {
 	id = req.params.id;
 	const deleted = await deleteHamsterById(id);
 if (deleted) {
-	res.sendStatus(204);
+	res.sendStatus(200);
 } else {
 	res.sendStatus(404);
 
