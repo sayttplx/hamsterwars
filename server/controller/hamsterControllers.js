@@ -1,11 +1,11 @@
 const { db } = require('../firebase');
 const HAMSTERS = 'hamsters';
-// const validate = require('../validator/isHamsterUpdateObj');
-const validateHamster = require('../validator/isHamsterObj');
+const validate = require('../validators/isHamsterUpdateObject');
+// const validateHamster = require('../validators/isHamsterObject');
 
 
 
-exports.getAllHamsters = async (req, res, next) => {
+exports.getAllHamsters = async (req, res) => {
 
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
@@ -25,7 +25,7 @@ exports.getAllHamsters = async (req, res, next) => {
 }
 
 
-exports.getRandomHamster = async (req, res, next) => {
+exports.getRandomHamster = async (req, res) => {
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
 
@@ -46,7 +46,7 @@ exports.getRandomHamster = async (req, res, next) => {
 }
 
 
-exports.getHamsterById = async (req, res, next) => {
+exports.getHamsterById = async (req, res) => {
 
     const hamsterId = req.params.id;
 
@@ -61,7 +61,7 @@ exports.getHamsterById = async (req, res, next) => {
     }
 }
 
-exports.updateOneHamsterById = async (req, res, next) => {
+exports.updateOneHamsterById = async (req, res) => {
 
     if (!validate(req.body)) {
         res.sendStatus(400);
@@ -81,7 +81,7 @@ exports.updateOneHamsterById = async (req, res, next) => {
     };
 };
 
-exports.deleteOneHamsterById = async (req, res, next) => {
+exports.deleteOneHamsterById = async (req, res) => {
 
     const hamsterId = req.params.id;
     const hamsterSnapshot = await db.collection(HAMSTERS).doc(hamsterId).get();
@@ -94,7 +94,7 @@ exports.deleteOneHamsterById = async (req, res, next) => {
     };
 }
 
-exports.getCutestHamster = async (req, res, next) => {
+exports.getCutestHamster = async (req, res) => {
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
 
@@ -109,7 +109,7 @@ exports.getCutestHamster = async (req, res, next) => {
     });
 
     const sortedHamsters = arr.sort((a, b) => {
-        return a.wins - b.wins;
+        return b.wins - a.wins;
     })
 
     const cutestHamster = [];
@@ -120,7 +120,9 @@ exports.getCutestHamster = async (req, res, next) => {
 };
 
 
-exports.addOneHamster = async (req, res, next) => {
+exports.addOneHamster = async (req, res) => {
+
+    
     const hamster = req.body;
     const hamstersRef = db.collection(HAMSTERS);
     await hamstersRef.add(hamster);

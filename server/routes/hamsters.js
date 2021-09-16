@@ -20,9 +20,9 @@ const {
 	addOneHamster,
 } = require('../controller/hamsterControllers')
 
+
 // GET /hamsters
 router.get('/', getAllHamsters)
-
 
 // GET /hamsters/random
 router.get('/random', getRandomHamster)
@@ -30,10 +30,8 @@ router.get('/random', getRandomHamster)
 // GET /hamsters/cutest
 router.get('/cutest', getCutestHamster)
 
-
 // GET /hamsters/:id
 router.get('/:id', getHamsterById)
-
 
 // POST /hamsters
 router.post('/', addOneHamster)

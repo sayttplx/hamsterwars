@@ -3,19 +3,22 @@ const express = require('express');
 const app = express();
 const hamstersRoute = require('./routes/hamsters.js');
 
+
 // Set the port
 const PORT = 8080;
 
 // Middleware
 app.use( express.urlencoded({ extended: true }) )
 app.use( express.json() )
-app.use((req, res, next) => {
-	console.log(`${req.method} ${req.url}`);
-	console.log(req.body);
-	console.log(req.params);
-	console.log(req.query);
+
+
+// Logger
+app.use( (req, res, next) => {
+	console.log(`${req.method} ${req.url}`)
+	console.log(req.body)
 	next()
 })
+
 
 // Routes
 app.use('/hamsters', hamstersRoute);
