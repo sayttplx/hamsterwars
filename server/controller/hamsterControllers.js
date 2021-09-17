@@ -126,11 +126,7 @@ exports.addOneHamster = async (req, res) => {
         res.sendStatus(400);
         return;
     }
-
-    const hamster = req.body;
-    const hamstersRef = db.collection(HAMSTERS);
-    await hamstersRef.add(hamster);
-    const hamsterId = await hamstersRef.add(hamster)
-    console.log(hamsterId.id);
-    res.status(200).send(`New hamster created with id : ${hamsterId.id}`);
+    const hamsterRef = await db.collection(HAMSTERS).add(req.body);
+    const newHamster = {id: hamsterRef.id}
+    return res.status(200).send(newHamster);
 }

@@ -5,12 +5,12 @@ const isHamsterUpdateObject = (obj) => {
     const keys = Object.keys(obj)
     const value = Object.values(obj)
 
-    if( !keys.includes('wins') || !keys.includes('defeats') || !keys.includes('games')) {
+    if( !keys.includes('wins') || !keys.includes('games')) {
         return false
     }
 
     const filter = value.filter( x => (typeof x === 'number') )
-    return filter.length === 3
+    return filter.length === 2
 }
 
 module.exports = isHamsterUpdateObject

@@ -1,6 +1,8 @@
 // Imports
 const express = require('express');
 const app = express();
+const cors = require('cors');
+
 const hamstersRoute = require('./routes/hamsters.js');
 
 
@@ -10,6 +12,8 @@ const PORT = process.env.PORT || 8080;;
 // Middleware
 app.use( express.urlencoded({ extended: true }) )
 app.use( express.json() )
+app.use( cors())
+
 
 
 // Logger

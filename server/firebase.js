@@ -6,7 +6,6 @@ if( process.env.SERVICE_KEY ) {
   serviceAccount = JSON.parse(process.env.SERVICE_KEY);
 } else {
   serviceAccount = require('./key.json');
-  console.log(serviceAccount)
 }
 
 admin.initializeApp({
