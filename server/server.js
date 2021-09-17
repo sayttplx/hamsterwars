@@ -5,7 +5,7 @@ const hamstersRoute = require('./routes/hamsters.js');
 
 
 // Set the port
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;;
 
 // Middleware
 app.use( express.urlencoded({ extended: true }) )
