@@ -73,7 +73,7 @@ exports.updateOneHamsterById = async (req, res) => {
 
     const hamsterSnapshot = await db.collection(HAMSTERS).doc(hamsterId).get();
 
-    if(hamsterSnapshot.exists) {
+    if (hamsterSnapshot.exists) {
         await db.collection(HAMSTERS).doc(hamsterId).update(hamster);
         res.sendStatus(200);
     } else {
@@ -86,7 +86,7 @@ exports.deleteOneHamsterById = async (req, res) => {
     const hamsterId = req.params.id;
     const hamsterSnapshot = await db.collection(HAMSTERS).doc(hamsterId).get();
 
-    if(hamsterSnapshot.exists) {
+    if (hamsterSnapshot.exists) {
         await db.collection(HAMSTERS).doc(hamsterId).delete();
         res.sendStatus(200);
     } else {
@@ -98,25 +98,18 @@ exports.getCutestHamster = async (req, res) => {
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
 
-    if (hamstersSnapshot.empty) {
-        res.sendStatus(400);
-        return;
-    };
+    if (hamstersSnapshot.empty) { res.sendStatus(400); return; };
 
     const arr = [];
-    hamstersSnapshot.forEach( hamster => {
-        arr.push(hamster.data());
-    });
+    hamstersSnapshot.forEach(hamster => { arr.push(hamster.data()); });
 
-    const sortedHamsters = arr.sort((a, b) => {
-        return b.wins - a.wins;
-    })
+    const sortedHamsters = arr.sort((a, b) => { return b.wins - a.wins; })
 
     const cutestHamster = [];
-    for (let i = 0; i < 1; i++) {
-        cutestHamster.push(sortedHamsters[i]);
-    }
-    res.send(cutestHamster);
+    for (let i = 0; i < 1; i++) { cutestHamster.push(sortedHamsters[i]); }
+
+    const winner = [...cutestHamster]
+    res.send(winner);
 };
 
 
@@ -127,6 +120,6 @@ exports.addOneHamster = async (req, res) => {
         return;
     }
     const hamsterRef = await db.collection(HAMSTERS).add(req.body);
-    const newHamster = {id: hamsterRef.id}
+    const newHamster = { id: hamsterRef.id }
     return res.status(200).send(newHamster);
 }
