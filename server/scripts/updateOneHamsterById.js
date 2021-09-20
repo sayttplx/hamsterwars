@@ -1,6 +1,8 @@
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
+updateOneHamsterById()
+
 async function updateOneHamsterById(id) {
     console.log('Update Sixten...');
     const hamsterId = id 
@@ -22,4 +24,3 @@ async function updateOneHamsterById(id) {
     return hamster.data()
 }
 
-module.exports = { updateOneHamsterById }

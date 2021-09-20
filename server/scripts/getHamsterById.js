@@ -1,6 +1,8 @@
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
+getHamsterById(id)
+
 async function getHamsterById(id) {
     console.log('Looking for Sixten...');
     const hamsterId = id
@@ -17,4 +19,3 @@ async function getHamsterById(id) {
 
 
 
-module.exports = { getHamsterById }

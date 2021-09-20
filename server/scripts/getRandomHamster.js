@@ -1,6 +1,8 @@
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
+getRandomHamster()
+
 async function getRandomHamster() {
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
@@ -20,4 +22,3 @@ async function getRandomHamster() {
     return randomHamster;
 };
 
-module.exports = { getRandomHamster }

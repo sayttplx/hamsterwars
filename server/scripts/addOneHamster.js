@@ -1,7 +1,7 @@
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
-
+addOneHamster()
 
 async function addOneHamster() {
 	console.log('Add a new hamster...');
@@ -21,4 +21,3 @@ async function addOneHamster() {
 	console.log('Added hamster with the id ' + hamsterRef.id);
 }
 
-module.exports = {addOneHamster};

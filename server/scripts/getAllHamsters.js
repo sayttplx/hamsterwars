@@ -1,6 +1,8 @@
 const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
+getAllHamsters()
+
  async function getAllHamsters() {
     console.log('Getting all hamsters...');
 
@@ -28,4 +30,3 @@ const HAMSTERS = 'hamsters'
     return arr
 }
 
-module.exports = { getAllHamsters }

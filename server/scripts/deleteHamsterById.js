@@ -2,6 +2,8 @@ const { db } = require('../firebase')
 const HAMSTERS = 'hamsters'
 
 
+deleteHamsterById(id)
+
 async function deleteHamsterById(id) {
 	console.log('Deleting a document...');
 	const docId = id || 'IgGcFb3glpaM27C7DYK6'
@@ -18,5 +20,3 @@ async function deleteHamsterById(id) {
 		console.log('Document not found.');
 	}
 }
-
-module.exports = { deleteHamsterById }
