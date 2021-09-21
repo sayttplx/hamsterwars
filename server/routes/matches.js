@@ -1,31 +1,18 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-
-
+const { getAllMatches, getMatchById, addOneMatch, deleteOneMatchById } = require('../controller/matchControllers');
 
 // GET /matches
-router.get('/', (req, res) => {})
-
-// GET /winners
-router.get('/winners', (req, res) => {})
-
-// GET /losers
-router.get('/losers', (req, res) => {})
-
-// GET //matchWinners/:id
-router.get('/matchWinners/:id', (req, res) => {})
+router.get('/', getAllMatches);
 
 // GET /matches/:id
-router.get('/matches/:id', (req, res) => {})
+router.get('/:id', getMatchById);
 
 // POST /matches
-router.post('/matches', (req, res) => {})
+router.post('/', addOneMatch);
 
 // DELETE /matches/:id
-router.delete('/matches/:id', (req, res) => {})
+router.delete('/:id', deleteOneMatchById);
 
-
-
-
-module.exports = router
+module.exports = router;

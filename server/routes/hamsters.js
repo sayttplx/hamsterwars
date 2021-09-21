@@ -1,6 +1,5 @@
-const express = require('express')
-const router = express.Router()
-
+const express = require('express');
+const router = express.Router();
 
 const {
 	getAllHamsters,
@@ -10,30 +9,27 @@ const {
 	deleteOneHamsterById,
 	getCutestHamster,
 	addOneHamster,
-} = require('../controller/hamsterControllers')
-
+} = require('../controller/hamsterControllers');
 
 // GET /hamsters
-router.get('/', getAllHamsters)
+router.get('/', getAllHamsters);
 
 // GET /hamsters/random
-router.get('/random', getRandomHamster)
+router.get('/random', getRandomHamster);
 
 // GET /hamsters/cutest
-router.get('/cutest', getCutestHamster)
+router.get('/cutest', getCutestHamster);
 
 // GET /hamsters/:id
-router.get('/:id', getHamsterById)
+router.get('/:id', getHamsterById);
 
 // POST /hamsters
-router.post('/', addOneHamster)
+router.post('/', addOneHamster);
 
 // PUT /hamsters/:id
-router.put('/:id', updateOneHamsterById)
+router.put('/:id', updateOneHamsterById);
 
 // DELETE /hamsters/:id
-router.delete('/:id', deleteOneHamsterById)
-
+router.delete('/:id', deleteOneHamsterById);
 
 module.exports = router
-

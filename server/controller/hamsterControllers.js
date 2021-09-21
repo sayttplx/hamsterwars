@@ -10,11 +10,11 @@ exports.getAllHamsters = async (req, res) => {
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
 
+    const arr = [];
+
     if (hamstersSnapshot.empty) {
         return arr;
     }
-
-    const arr = [];
 
     await hamstersSnapshot.forEach(async hamsterRef => {
         const hamster = await hamsterRef.data();
@@ -115,7 +115,7 @@ exports.getCutestHamster = async (req, res) => {
     arr.forEach(hamster => {
         if (hamster.games > 0) {        // if the hamster has played at least one game
             percentage = hamster.wins / hamster.games * 100  // calculate the percentage of wins
-            hamster.procent = percentage + '%'; // add the procent to the hamster
+            hamster.winningProcent = percentage + '%'; // add the procent to the hamster
             newHamsterArray.push(hamster) // add the hamster to the new hamster array
             if (highestPercentage !== hamster.perc) { // if the procent is higher than the highest procent
                 highestPercentage = Math.max(...newHamsterArray.map(hamster => hamster.procent))    // set the highest procent to the new procent
@@ -128,20 +128,8 @@ exports.getCutestHamster = async (req, res) => {
         }
     });
 
-
     res.status(200).send(cutestHamster);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 exports.addOneHamster = async (req, res) => {

@@ -3,9 +3,6 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
-const hamstersRoute = require('./routes/hamsters.js');
-
-
 // Set the port
 const PORT = process.env.PORT || 8080;;
 
@@ -14,8 +11,6 @@ app.use( express.urlencoded({ extended: true }) )
 app.use( express.json() )
 app.use( cors())
 
-
-
 // Logger
 app.use( (req, res, next) => {
 	console.log(`${req.method} ${req.url}`)
@@ -23,11 +18,15 @@ app.use( (req, res, next) => {
 	next()
 })
 
-
 // Routes
+const hamstersRoute = require('./routes/hamsters.js');
 app.use('/hamsters', hamstersRoute);
 
+const matchesRoute = require('./routes/matches.js');
+app.use('/matches', matchesRoute);
 
+const laddersRoute = require('./routes/ladders')
+app.use('/', laddersRoute);
 
 
 // Start the server
