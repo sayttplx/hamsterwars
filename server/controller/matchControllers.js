@@ -9,7 +9,7 @@ exports.getAllMatches = async (req, res) => {
     const arr = [];
 
     if (matchesSnapshot.empty) {
-        res.send(arr); 
+        res.send(arr);
     }
 
     await matchesSnapshot.forEach(async matchRef => {
@@ -17,7 +17,7 @@ exports.getAllMatches = async (req, res) => {
         match.id = matchRef.id;
         arr.push(match);
     });
-    res.send(arr);  
+    res.send(arr);
 };
 
 exports.addOneMatch = async (req, res) => {
@@ -30,7 +30,7 @@ exports.addOneMatch = async (req, res) => {
 exports.getMatchById = async (req, res) => {
     const matchId = req.params.id;
     console.log('lol')
-    
+
 
     const matchSnapshot = await db.collection(MATCHES).doc(matchId).get();
     console.log(matchId)

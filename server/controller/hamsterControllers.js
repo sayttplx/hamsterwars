@@ -107,8 +107,8 @@ exports.getCutestHamster = async (req, res) => {
         arr.push(hamsterRef.data());
     });
 
-    let newHamsterArray = [];   
-    let percentage; 
+    let newHamsterArray = [];
+    let percentage;
     let cutestHamster = [];
     let highestPercentage;
 
