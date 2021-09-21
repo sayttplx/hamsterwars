@@ -94,6 +94,7 @@ exports.deleteOneHamsterById = async (req, res) => {
     };
 }
 
+
 exports.getCutestHamster = async (req, res) => {
     const hamstersRef = db.collection(HAMSTERS);
     const hamstersSnapshot = await hamstersRef.get();
@@ -101,16 +102,46 @@ exports.getCutestHamster = async (req, res) => {
     if (hamstersSnapshot.empty) { res.sendStatus(400); return; };
 
     const arr = [];
-    hamstersSnapshot.forEach(hamster => { arr.push(hamster.data()); });
 
-    const sortedHamsters = arr.sort((a, b) => { return b.wins - a.wins; })
+    hamstersSnapshot.forEach(async hamsterRef => {
+        arr.push(hamsterRef.data());
+    });
 
-    const cutestHamster = [];
-    for (let i = 0; i < 1; i++) { cutestHamster.push(sortedHamsters[i]); }
+    let newHamsterArray = [];   
+    let percentage; 
+    let cutestHamster = [];
+    let highestPercentage;
 
-    const winner = [...cutestHamster]
-    res.send(winner);
-};
+    arr.forEach(hamster => {
+        if (hamster.games > 0) {        // if the hamster has played at least one game
+            percentage = hamster.wins / hamster.games * 100  // calculate the percentage of wins
+            hamster.procent = percentage + '%'; // add the procent to the hamster
+            newHamsterArray.push(hamster) // add the hamster to the new hamster array
+            if (highestPercentage !== hamster.perc) { // if the procent is higher than the highest procent
+                highestPercentage = Math.max(...newHamsterArray.map(hamster => hamster.procent))    // set the highest procent to the new procent
+                if (hamster.procent === highestPercentage) {    // if the procent is the highest
+                    cutestHamster = [hamster];  // set the cutest hamster to the current hamster
+                }
+            } else {
+                cutestHamster.push(hamster)     // if the procent is the same as the highest procent
+            }
+        }
+    });
+
+
+    res.status(200).send(cutestHamster);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 exports.addOneHamster = async (req, res) => {

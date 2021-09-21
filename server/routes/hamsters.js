@@ -2,14 +2,6 @@ const express = require('express')
 const router = express.Router()
 
 
-// const getAllHamsters = require('../scripts/getAllHamsters').getAllHamsters
-// const getHamsterById = require('../scripts/getHamsterById').getHamsterById
-// const getRandomHamster = require('../scripts/getRandomHamster').getRandomHamster
-// const getCutestHamster = require('../scripts/getCutestHamster').getCutestHamster
-// const addOneHamster = require('../scripts/addOneHamster').addOneHamster
-// const updateOneHamsterById = require('../scripts/updateOneHamsterById').updateOneHamsterById
-// const deleteHamsterById = require('../scripts/deleteHamsterById').deleteHamsterById
-
 const {
 	getAllHamsters,
 	getRandomHamster,
