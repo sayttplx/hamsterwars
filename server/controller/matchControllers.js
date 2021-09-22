@@ -28,16 +28,12 @@ exports.addOneMatch = async (req, res) => {
 }
 
 exports.getMatchById = async (req, res) => {
+
     const matchId = req.params.id;
-    console.log('lol')
-
-
     const matchSnapshot = await db.collection(MATCHES).doc(matchId).get();
-    console.log(matchId)
-    console.log(matchSnapshot)
+    
     if (matchSnapshot.exists) {
         const match = await matchSnapshot.data();
-        console.log(match)
         match.id = matchSnapshot.id;
         res.send(match);
     } else {

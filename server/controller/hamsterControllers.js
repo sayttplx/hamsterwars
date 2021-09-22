@@ -107,28 +107,28 @@ exports.getCutestHamster = async (req, res) => {
         arr.push(hamsterRef.data());
     });
 
-    let arr = [];
+    let newArr = [];
     let percentage;
-    let cutestHamsters = [];
+    let cutestHamster = [];
     let highestPercentage;
 
     arr.forEach(hamster => {
         if (hamster.games > 0) {        // if the hamster has played at least one game
             percentage = hamster.wins / hamster.games * 100  // calculate the percentage of wins
             hamster.winningProcent = percentage + ' %'; // add the procent to the hamster
-            arr.push(hamster) // add the hamster to the new hamster array
+            newArr.push(hamster) // add the hamster to the new hamster array
             if (highestPercentage !== hamster.perc) { // if the procent is higher than the highest procent
-                highestPercentage = Math.max(...arr.map(hamster => hamster.procent))    // set the highest procent to the new procent
+                highestPercentage = Math.max(...newArr.map(hamster => hamster.procent))    // set the highest procent to the new procent
                 if (hamster.procent === highestPercentage) {    // if the procent is the highest
-                    cutestHamsters = [hamster];  // set the cutest hamster to the current hamster
+                    cutestHamster = [hamster];  // set the cutest hamster to the current hamster
                 }
             } else {
-                cutestHamsters.push(hamster)     // if the procent is the same as the highest procent
+                cutestHamster.push(hamster)     // if the procent is the same as the highest procent
             }
         }
     });
 
-    res.status(200).send(cutestHamsters);
+    res.status(200).send(cutestHamster);
 }
 
 
