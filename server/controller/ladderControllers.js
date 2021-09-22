@@ -1,10 +1,9 @@
 const { db } = require('../firebase');
 const HAMSTERS = 'hamsters';
 
-
 exports.getWinners = async (req, res) => {
     let getHamsters = await db.collection(HAMSTERS).orderBy('wins', 'desc').limit(5).get();
-    
+
     const topHamsters = [];
     getHamsters.forEach(doc => {
         topHamsters.push(doc.data());

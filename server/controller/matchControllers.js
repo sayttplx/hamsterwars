@@ -1,13 +1,11 @@
 const { db } = require('../firebase');
 const MATCHES = 'matches';
 
-
 exports.getAllMatches = async (req, res) => {
     const matchesRef = db.collection(MATCHES);
     const matchesSnapshot = await matchesRef.get();
 
     const arr = [];
-
     if (matchesSnapshot.empty) {
         res.send(arr);
     }
@@ -31,7 +29,7 @@ exports.getMatchById = async (req, res) => {
 
     const matchId = req.params.id;
     const matchSnapshot = await db.collection(MATCHES).doc(matchId).get();
-    
+
     if (matchSnapshot.exists) {
         const match = await matchSnapshot.data();
         match.id = matchSnapshot.id;
@@ -52,4 +50,4 @@ exports.deleteOneMatchById = async (req, res) => {
     } else {
         res.sendStatus(404);
     };
-}
+};
