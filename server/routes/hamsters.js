@@ -32,4 +32,4 @@ router.put('/:id', updateOneHamsterById);
 // DELETE /hamsters/:id
 router.delete('/:id', deleteOneHamsterById);
 
-module.exports = router
+module.exports = router;

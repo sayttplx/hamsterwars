@@ -1,12 +1,12 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
-const { getWinners, getLosers } = require('../controller/ladderControllers')
+const { getWinners, getLosers } = require('../controller/ladderControllers');
 
 // GET /winners
-router.get('/winners', getWinners)
+router.get('/winners', getWinners);
 
 // GET /losers
-router.get('/losers', getLosers)
+router.get('/losers', getLosers);
 
-module.exports = router
+module.exports = router;
