@@ -8,7 +8,7 @@ exports.getWinners = async (req, res) => {
     getHamsters.forEach(doc => {
         topHamsters.push(doc.data());
     })
-    res.status(200).send(topHamsters)
+    res.status(200).send(topHamsters);
 }
 
 exports.getLosers = async (req, res) => {
@@ -18,5 +18,5 @@ exports.getLosers = async (req, res) => {
     getHamsters.forEach(doc => {
         bottomHamsters.push(doc.data());
     })
-    res.status(200).send(bottomHamsters)
+    res.status(200).send(bottomHamsters);
 }

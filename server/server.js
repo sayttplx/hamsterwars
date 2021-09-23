@@ -3,6 +3,11 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 
+const hamstersRoute = require('./routes/hamsters.js');
+const matchesRoute = require('./routes/matches.js');
+const laddersRoute = require('./routes/ladders');
+const winnersRoute = require('./routes/winners');
+
 // Set the port
 const PORT = process.env.PORT || 8080;
 
@@ -22,16 +27,12 @@ app.use((req, res, next) => {
 })
 
 // Routes
-const hamstersRoute = require('./routes/hamsters.js');
 app.use('/hamsters', hamstersRoute);
 
-const matchesRoute = require('./routes/matches.js');
 app.use('/matches', matchesRoute);
 
-const laddersRoute = require('./routes/ladders');
 app.use('/', laddersRoute);
 
-const winnersRoute = require('./routes/winners');
 app.use('/matchwinners', winnersRoute);
 
 
